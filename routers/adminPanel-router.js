@@ -5,6 +5,7 @@ const { adminAuth } = require("../middleware/login-auth");
 // Aprouter = Admin panel routings
 const Aprouter = Router();
 
+Aprouter.post('/create', adminAuth , AdminCtl.cerateAdmin);
 Aprouter.get('/', adminAuth , AdminCtl.homePage);
 Aprouter.get('/add_admin',adminAuth , AdminCtl.addadminPage);
 Aprouter.get('/view_admin',adminAuth , AdminCtl.viewadminPage);
