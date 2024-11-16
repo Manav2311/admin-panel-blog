@@ -1,4 +1,4 @@
-const admin = require('../models/adminSchema')
+const admin = require('../models/adminSchema');
 
 module.exports.cerateAdmin = async(req,res)=>{
     try {
@@ -6,7 +6,7 @@ module.exports.cerateAdmin = async(req,res)=>{
         return res.redirect('/login');
     } catch (error) {
         console.log(error);
-        return res.redirect('/login');
+        return res.redirect('back');
     }
 }
 
@@ -51,7 +51,8 @@ module.exports.login = async (req, res) => {
         console.log(req.body);
         let { email, password } = req.body;
         let currentAdmin = await admin.findOne({ email });
-
+        console.log(currentAdmin);
+        
         if (currentAdmin) {
             if (currentAdmin.password == password) {
                 return res.cookie('adminId', currentAdmin.id).redirect('/')
