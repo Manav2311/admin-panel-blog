@@ -1,12 +1,12 @@
 const admin = require('../models/adminSchema');
 
-module.exports.cerateAdmin = async(req,res)=>{
+module.exports.cerateAdmin = async (req, res) => {
     try {
         let data = await admin.create(req.body);
-        return res.redirect('/login');
+        return res.redirect('/');
     } catch (error) {
         console.log(error);
-        return res.redirect('back');
+        return res.redirect('/');
     }
 }
 
